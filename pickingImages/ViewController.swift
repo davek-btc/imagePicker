@@ -91,7 +91,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
         
-    
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -122,7 +121,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
          print("Working keyboardWillShow")
         
         if textBottom.isFirstResponder {
-             print("Working with if statement keyboardWillShow")
+             print("Working with in if statement")
             self.view.frame.origin.y = 0
             self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
@@ -131,11 +130,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     
     func keyboardWillHide(_ notification:Notification) {
         
-        
             self.view.frame.origin.y -= getKeyboardHeight(notification)
             self.view.frame.origin.y = 0
-        
-        
         
     }
     
