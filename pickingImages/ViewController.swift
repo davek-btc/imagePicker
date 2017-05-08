@@ -19,6 +19,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
@@ -26,7 +28,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
             NSStrokeWidthAttributeName: -4.0]
         
         textTop.text = "TOP"
-        textTop.textAlignment = .center
+        textTop.textAlignment = .justified
         textTop.defaultTextAttributes = memeTextAttributes
         
         textBottom.text = "BOTTOM"
@@ -37,22 +39,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         textBottom.delegate = self
      
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard)))
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
+        
         
     }
     
     func dismissKeyboard(){
         textTop.resignFirstResponder()
         textBottom.resignFirstResponder()
+        
     }
     
     func textFieldShouldReturn(userText: UITextField!) -> Bool {
@@ -63,13 +68,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         return true
     }
     
-    @IBAction func pickAnImage(_ sender: Any) { //Action/Func to button.
-   
-        let pickController = UIImagePickerController() //Creation of instances of object
-        pickController.delegate = self // set delegate before your pickController
-        self.present(pickController, animated: true, completion: nil)
-    
-    }
+//    @IBAction func pickAnImage(_ sender: Any) { //Action/Func to button.
+//   
+//        let pickController = UIImagePickerController() //Creation of instances of object
+//        pickController.delegate = self // set delegate before your pickController
+//        self.present(pickController, animated: true, completion: nil)
+//    
+//    }
 
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
@@ -102,22 +107,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         
     }
     
-    
     func subscribeToKeyboardNotifications() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         
-    }
-    
-    func unsubscribeFromKeyboardNotifications() {
-        
-       NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func keyboardWillShow(_ notification:Notification) {
         
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        self.view.frame.origin.y = 0
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(_ notification:Notification) {
+        
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        self.view.frame.origin.y = 0
+        
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {

@@ -23,18 +23,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sI-93-gxb">
-                                <rect key="frame" x="62" y="178" width="250" height="310"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6b-zF-Ssr">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="JGa-dl-x5B">
-                                        <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="sM4-cy-ecs"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gci-nk-FBc"/>
-                                    <barButtonItem title="Album" id="axR-M6-lP1">
+                                    <barButtonItem title="Album" style="plain" id="axR-M6-lP1">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="TTR-88-OIx"/>
                                         </connections>
@@ -47,15 +41,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-eK-SNx">
-                                <rect key="frame" x="86" y="200" width="202" height="46"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epu-3h-spx">
+                                <rect key="frame" x="83" y="528" width="208" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epu-3h-spx">
-                                <rect key="frame" x="83" y="418" width="208" height="37"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-eK-SNx">
+                                <rect key="frame" x="86" y="76" width="202" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -64,13 +58,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8sI-93-gxb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="158" id="1kQ-eS-jBN"/>
+                            <constraint firstItem="8sI-93-gxb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="1kQ-eS-jBN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x6b-zF-Ssr" secondAttribute="bottom" id="6NW-Qy-XSo"/>
-                            <constraint firstItem="x6b-zF-Ssr" firstAttribute="top" secondItem="8sI-93-gxb" secondAttribute="bottom" constant="135" id="HKc-re-gam"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8sI-93-gxb" secondAttribute="trailing" constant="47" id="JGW-eC-vUz"/>
+                            <constraint firstItem="x6b-zF-Ssr" firstAttribute="top" secondItem="8sI-93-gxb" secondAttribute="bottom" id="HKc-re-gam"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8sI-93-gxb" secondAttribute="trailing" constant="-16" id="JGW-eC-vUz"/>
                             <constraint firstAttribute="trailing" secondItem="x6b-zF-Ssr" secondAttribute="trailing" id="PgK-EH-tW1"/>
-                            <constraint firstItem="8sI-93-gxb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="46" id="hwa-Zf-FEu"/>
-                            <constraint firstItem="x6b-zF-Ssr" firstAttribute="top" secondItem="8sI-93-gxb" secondAttribute="bottom" constant="135" id="s6n-FQ-TDn"/>
+                            <constraint firstItem="8sI-93-gxb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="hwa-Zf-FEu"/>
+                            <constraint firstItem="x6b-zF-Ssr" firstAttribute="top" secondItem="8sI-93-gxb" secondAttribute="bottom" id="s6n-FQ-TDn"/>
                             <constraint firstItem="x6b-zF-Ssr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sRp-SB-09M"/>
                         </constraints>
                     </view>
