@@ -14,6 +14,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     @IBOutlet weak var textTop: UITextField!
     @IBOutlet weak var textBottom: UITextField!
     
+    struct Meme {
+        
+        var topText : String
+        var bottomText : String
+        var imagePickerView : UIImage
+        var memedImage : UIImage
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -74,7 +83,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
 //        self.present(pickController, animated: true, completion: nil)
 //    
 //    }
+    
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: textTop.text!, bottomText: textBottom.text!, imagePickerView: imagePickerView.image!, memedImage: generateMemedImage())
+    }
+    
+    
 
+    func generateMemedImage() -> UIImage {
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+    }
+    
+    
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
         let imagePicker = UIImagePickerController()
