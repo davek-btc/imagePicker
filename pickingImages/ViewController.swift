@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate { // add protocal to the class declaration
 
     @IBOutlet weak var imagePickerView: UIImageView! // Outlet
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var textTop: UITextField!
     @IBOutlet weak var textBottom: UITextField!
     
@@ -45,12 +44,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        unsubscribeFromKeyboardNotifications()
         
     }
     
@@ -114,16 +113,29 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWillShow(_ notification:Notification) {
+    func unsubscribeFromKeyboardNotifications() {
         
-        self.view.frame.origin.y = 0
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification:Notification) {
+         print("Working keyboardWillShow")
+        
+        if textBottom.isFirstResponder {
+             print("Working with if statement keyboardWillShow")
+            self.view.frame.origin.y = 0
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        
     }
     
     func keyboardWillHide(_ notification:Notification) {
         
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
-        self.view.frame.origin.y = 0
+        
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
+        
+        
         
     }
     

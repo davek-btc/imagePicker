@@ -41,15 +41,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epu-3h-spx">
-                                <rect key="frame" x="83" y="528" width="208" height="37"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-eK-SNx">
+                                <rect key="frame" x="86" y="148" width="202" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-eK-SNx">
-                                <rect key="frame" x="86" y="76" width="202" height="46"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epu-3h-spx">
+                                <rect key="frame" x="83" y="444" width="208" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -69,7 +69,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cameraButton" destination="5Xz-Ug-DHP" id="PL0-oa-WNb"/>
                         <outlet property="imagePickerView" destination="8sI-93-gxb" id="mgC-YV-Kb7"/>
                         <outlet property="textBottom" destination="epu-3h-spx" id="5VZ-0g-svj"/>
                         <outlet property="textTop" destination="ENH-eK-SNx" id="XHo-fW-Sg8"/>
