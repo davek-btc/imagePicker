@@ -33,11 +33,13 @@
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="sM4-cy-ecs"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gci-nk-FBc"/>
                                     <barButtonItem title="Album" id="axR-M6-lP1">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="TTR-88-OIx"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xGp-aE-W2t"/>
                                     <barButtonItem title="Camera" id="5Xz-Ug-DHP">
                                         <connections>
                                             <action selector="selectCamera:" destination="BYZ-38-t0r" id="bPm-uy-w5x"/>

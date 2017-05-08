@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate { // add protocal to the class declaration
+class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate { // add protocal to the class declaration
 
     @IBOutlet weak var imagePickerView: UIImageView! // Outlet
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -33,19 +33,36 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         textBottom.textAlignment = .center
         textBottom.defaultTextAttributes = memeTextAttributes
     
-       
+        textTop.delegate = self
+        textBottom.delegate = self
+     
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard)))
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-       
+        
     }
-
+    
+    func dismissKeyboard(){
+        textTop.resignFirstResponder()
+        textBottom.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+        
+        textBottom.resignFirstResponder()
+        textTop.resignFirstResponder()
+        
+        return true
+    }
+    
     @IBAction func pickAnImage(_ sender: Any) { //Action/Func to button.
    
         let pickController = UIImagePickerController() //Creation of instances of object
@@ -54,18 +71,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        //let UIImagePickerControllerReferenceURL: String
-    
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.image = image
-        }
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
         let imagePicker = UIImagePickerController()
@@ -84,6 +89,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         
     
     }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //let UIImagePickerControllerReferenceURL: String
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.image = image
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     
     func subscribeToKeyboardNotifications() {
         
@@ -93,7 +111,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
     
     func unsubscribeFromKeyboardNotifications() {
         
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+       NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         
     }
     
@@ -109,9 +127,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
         return keyboardSize.cgRectValue.height
     }
     
-    func keyboardWillHide(_ notification:Notification) {
-        view.frame.origin.y = 0
-    }
+    
 }
 
     
